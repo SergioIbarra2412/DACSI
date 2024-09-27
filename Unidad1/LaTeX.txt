@@ -1,0 +1,289 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper]{geometry} % Configuración de márgenes y dimensiones de página
+
+\usepackage[utf8]{inputenc} % Codificación de caracteres
+\usepackage[spanish]{babel} % Configuración de idioma español
+\usepackage{amssymb} % Símbolos matemáticos adicionales
+\usepackage{subfigure} % Creación de subfiguras dentro de una figura
+\usepackage{newunicodechar} % Soporte para caracteres Unicode
+\usepackage{graphicx} % Inclusión de imágenes
+\usepackage{amsmath} % Ampliación de funcionalidades matemáticas
+\usepackage{xspace} % Control del espacio después de comandos
+\usepackage{booktabs} % Mejora la apariencia de las tablas
+\usepackage[table,xcdraw]{xcolor} % Colores personalizados para tablas
+\usepackage{url} % Inclusión y formato de enlaces URL
+\usepackage{lineno} % Numeración de líneas
+\usepackage{enumitem} % Control de listas y enumeraciones
+\usepackage{soul} % Resaltado de texto con subrayado
+\usepackage[numbers]{natbib} % Citas bibliográficas y bibliografía
+\usepackage[colorlinks=true, bookmarks=false, citecolor=blue, urlcolor=blue, linkcolor=blue, linktoc=page]{hyperref} % Creación de enlaces y referencias
+\usepackage{titlesec} % Control del formato de títulos de sección
+\usepackage{fancyhdr} % Personalización de encabezados y pies de página
+\usepackage{datetime} % Manipulación de fechas y tiempos
+% Modificar márgenes
+\geometry{left=2.5cm, right=2.5cm, top=2.0cm, bottom=2.0cm}
+% Espaciado entre líneas
+\linespread{1.5} 
+% Cambiar nombre a tablas
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+% Cambiar nombre a lista de tablas
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+% Modificar el estilo de los capítulos
+\titleformat{\chapter}[display]
+{\color{black}\fontfamily{pcr}\LARGE\scshape\raggedleft}
+{\chaptertitlename\ \color{red}\fontsize{20}{00}\mdseries\thechapter} {-10pt} {\color{black}\rmfamily\huge}
+%\titlespacing*{\chapter}{0pt}{0pt}{50pt}
+% Diseño del encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.1pt}
+% Quitar espacio vertical en listas
+\setlist[itemize]{noitemsep, topsep=0pt}
+% Numerar las secciones
+\setcounter{secnumdepth}{4} % Establece la profundidad de numeración de secciones
+\titleformat{\paragraph}{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{} % Define el formato de las subsubsubsecciones
+% Modificar la tabla de contenido
+\setcounter{tocdepth}{4}
+\addto\captionsspanish{\renewcommand{\contentsname}{Contenido}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% AQUI INICIA EL DOCUMENTO %%%%%%%
+\begin{document}
+\pagenumbering{Roman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% PORTADA %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\newgeometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\begin{minipage}[c]{0.15\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{01_Figuras/00_TECNM.png}
+\end{minipage}
+\hfill % Espacio horizontal entre las cajas
+\begin{minipage}[c]{0.8\textwidth}
+    \centering
+        \textsc{\large Tecnológico Nacional de México Campus Pabellón de Arteaga}\\[0.3cm]
+        \textsc{\large Tecnologías de la Información y Comunicacione}\\[0.3cm]
+        \hrule height1pt
+        \vspace{0.1cm}
+        \hrule height2pt
+        \vspace{0.3cm}
+\end{minipage}
+
+\begin{minipage}[c]{0.15\textwidth}
+    \vspace{0.5cm}
+    \hspace{0.5cm}
+    \vrule width1pt height15cm 
+    \hspace{0.05cm}
+    \vrule width2pt height15cm
+\end{minipage}
+\hfill % Espacio horizontal entre las cajas
+\begin{minipage}[c]{0.8\textwidth}
+    \centering
+        \textbf{\large Control de enfriadores}\\[1cm]
+        \text{\large Por}\\[1cm]
+        \text{\Large Sergio Antonio Reyes Ibarra}\\[1cm]
+        \textit{\large Proyecto de la Materia DACSI:}\\[1cm]
+        \text{\large Profesor:}\\[1cm]
+        \text{\Large Eduardo Flores Gallegos}\\[1cm]
+\end{minipage}
+
+\begin{minipage}[c]{0.23\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{01_Figuras/tecsito.jpeg}
+\end{minipage}
+
+
+\hfill % Espacio horizontal entre las cajas
+\begin{minipage}[c]{0.8\textwidth}
+    \centering
+        \mdseries{\large Pabellón de Arteaga, Aguascalientes, \the\year}
+\end{minipage}
+
+\end{titlepage}
+\restoregeometry
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% RESUMEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% TABLA DE CONTENIDO %%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+\section{Introducción}
+\subsection{Objetivos}
+\subsubsection{Objetivo General:}
+Desarrollar un sistema automatizado de control de enfriadores que permita a la empresa San Marcos gestionar de manera eficiente el préstamo y la devolución de los enfriadores a sus tiendas clientes, optimizando la recolección y organización de la información relacionada con los equipos y los datos de las tiendas y sus propietarios.
+
+
+\subsubsection{Objetivos Específicos:}
+ \textbf{Gestión de enfriadores prestados y devueltos:} 
+    Implementar un módulo que registre de manera precisa el préstamo y devolución de enfriadores, incluyendo fecha, tienda receptora, y estado del equipo.
+
+     \textbf{Registro y control de información de las tiendas:} 
+    Desarrollar un sistema para almacenar y gestionar la información completa de cada tienda (nombre, ubicación, tipo de tienda, etc.), facilitando la trazabilidad de los enfriadores asignados.
+
+     \textbf{Registro de datos de clientes propietarios de las tiendas:} 
+    Establecer una base de datos que permita asociar cada tienda a su respectivo cliente dueño, registrando detalles como nombre, contacto y otros datos relevantes.
+
+     \textbf{Monitoreo del estado de los enfriadores:} 
+    Incorporar un sistema de seguimiento del estado de los enfriadores (en reparación, activos, en uso, etc.) para mejorar la administración del inventario.
+
+     \textbf{Reportes y análisis de uso de enfriadores:} 
+    Implementar un módulo de generación de reportes que permita visualizar información detallada sobre el uso de los enfriadores, su rotación entre tiendas, y tiempos de préstamo.
+
+     \textbf{Optimización de la logística de entrega y recolección:} 
+    Diseñar una función para programar y optimizar las entregas y recolecciones de enfriadores, teniendo en cuenta la ubicación de las tiendas y los tiempos de uso.
+
+     \textbf{Integración con sistemas de inventario y mantenimiento:} 
+    Vincular el sistema de control de enfriadores con otros sistemas internos, como el inventario de equipos y los registros de mantenimiento, para una gestión centralizada.
+
+     \textbf{Seguridad y permisos de acceso:} 
+    Definir diferentes niveles de acceso para el personal de la empresa, asegurando que solo el personal autorizado pueda realizar modificaciones en los datos de los enfriadores, tiendas y clientes.
+
+\subsection{Etapa 1}
+\subsubsection{Resumen de la entrevista}
+\section*{Objetivos del Sistema}
+\begin{itemize}
+    \item \textbf{¿Cuál es el objetivo principal del sistema?} 
+    Mejorar la gestión del préstamo y devolución de enfriadores a las tiendas clientes, optimizando el seguimiento y control de los equipos.
+    
+    \item \textbf{¿Qué problemas actuales busca resolver el sistema?} 
+    Inconsistencias en el registro de enfriadores prestados, falta de visibilidad del estado de los equipos y dificultad para acceder a la información de las tiendas y clientes.
+\end{itemize}
+
+\section*{Gestión de Enfriadores}
+\textbf{¿Qué información se necesita registrar para cada enfriador?}
+\begin{itemize}
+    \item [\checkmark] ID del enfriador
+    \item [\checkmark] Marca/Modelo
+    \item [\checkmark] Estado (nuevo, en reparación, etc.)
+    \item [\checkmark] Fecha de préstamo
+    \item [\checkmark] Fecha de devolución
+    \item [\checkmark] Tienda asignada
+    \item [\checkmark] Observaciones
+\end{itemize}
+
+\section*{Información de las Tiendas}
+\textbf{¿Qué datos se deben recopilar para cada tienda?}
+\begin{itemize}
+    \item [\checkmark] ID de la tienda
+    \item [\checkmark] Nombre de la tienda
+    \item [\checkmark] Ubicación (dirección)
+    \item [\checkmark] Tipo de tienda (ej. supermercado, tienda de conveniencia)
+    \item [\checkmark] Contacto (nombre y número)
+\end{itemize}
+
+\section*{Datos del Cliente Propietario}
+\textbf{¿Qué información se requiere del cliente dueño de la tienda?}
+\begin{itemize}
+    \item [\checkmark] Nombre
+    \item [\checkmark] Número de contacto
+    \item [\checkmark] Correo electrónico
+    \item [\checkmark] Dirección
+\end{itemize}
+
+\section*{Funcionalidades del Sistema}
+\textbf{¿Qué funcionalidades adicionales considera necesarias?}
+\begin{itemize}
+    \item [\checkmark] Reportes de uso de enfriadores
+    \item [\checkmark] Alertas de devoluciones pendientes
+    \item [\checkmark] Monitoreo del estado de los enfriadores
+    \item [\checkmark] Seguridad y permisos de acceso
+\end{itemize}
+
+
+
+\subsubsection{Requerimientos}
+
+\begin{enumerate}
+    \item \textbf{Gestión de Enfriadores}
+    \begin{itemize}
+        \item Registrar la información de cada enfriador, incluyendo:
+        \begin{itemize}
+            \item ID del enfriador
+            \item Marca/Modelo
+            \item Estado (nuevo, en reparación, en uso)
+            \item Fecha de préstamo
+            \item Fecha de devolución
+            \item Tienda asignada
+            \item Observaciones
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Información de Tiendas}
+    \begin{itemize}
+        \item Registrar la información de cada tienda, incluyendo:
+        \begin{itemize}
+            \item ID de la tienda
+            \item Nombre de la tienda
+            \item Ubicación (dirección)
+            \item Tipo de tienda (ej. supermercado, tienda de conveniencia)
+            \item Contacto (nombre y número)
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Datos del Cliente Propietario}
+    \begin{itemize}
+        \item Registrar información de cada cliente dueño de la tienda, incluyendo:
+        \begin{itemize}
+            \item Nombre
+            \item Número de contacto
+            \item Correo electrónico
+            \item Dirección
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Funcionalidades del Sistema}
+    \begin{itemize}
+        \item Generar reportes de uso de enfriadores.
+        \item Enviar alertas de devoluciones pendientes a los usuarios responsables.
+        \item Monitorear el estado de los enfriadores en tiempo real.
+        \item Integrar con otros sistemas internos de la empresa.
+        \item Implementar un sistema de seguridad que gestione permisos de acceso para diferentes usuarios.
+    \end{itemize}
+
+    \item \textbf{Interfaz de Usuario}
+    \begin{itemize}
+        \item Crear una interfaz de usuario intuitiva y fácil de usar para la gestión de enfriadores y tiendas.
+        \item Proveer opciones de búsqueda y filtrado de enfriadores y tiendas.
+        \item Implementar un sistema de notificaciones para eventos importantes (préstamos, devoluciones, etc.).
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Requerimientos No Funcionales}
+
+\begin{enumerate}
+    \item \textbf{Rendimiento}
+    \begin{itemize}
+        \item El sistema debe manejar al menos 1000 registros de enfriadores y 500 tiendas sin afectar el rendimiento.
+    \end{itemize}
+
+    \item \textbf{Escalabilidad}
+    \begin{itemize}
+        \item El sistema debe ser escalable para permitir el registro de un número creciente de enfriadores y tiendas.
+    \end{itemize}
+
+    \item \textbf{Seguridad}
+    \begin{itemize}
+        \item Implementar medidas de seguridad para proteger la información de clientes y tiendas.
+        \item Asegurar que solo personal autorizado tenga acceso a funcionalidades críticas del sistema.
+    \end{itemize}
+
+    \item \textbf{Usabilidad}
+    \begin{itemize}
+        \item El sistema debe ser fácil de usar, con una curva de aprendizaje mínima para los usuarios.
+    \end{itemize}
+
+    \item \textbf{Compatibilidad}
+    \begin{itemize}
+        \item El sistema debe ser compatible con diferentes dispositivos (PC, tabletas, móviles) y navegadores web.
+    \end{itemize}
+\end{enumerate}
+
+
+\newpage
+\bibliographystyle{elsarticle-num-names}
+\bibliography{03_Bibliografias.bib}
+\end{document}
