@@ -1,0 +1,441 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper]{geometry} % Configuración de márgenes y dimensiones de página
+
+\usepackage[utf8]{inputenc} % Codificación de caracteres
+\usepackage[spanish]{babel} % Configuración de idioma español
+\usepackage{amssymb} % Símbolos matemáticos adicionales
+\usepackage{subfigure} % Creación de subfiguras dentro de una figura
+\usepackage{newunicodechar} % Soporte para caracteres Unicode
+\usepackage{graphicx} % Inclusión de imágenes
+\usepackage{amsmath} % Ampliación de funcionalidades matemáticas
+\usepackage{xspace} % Control del espacio después de comandos
+\usepackage{booktabs} % Mejora la apariencia de las tablas
+\usepackage[table,xcdraw]{xcolor} % Colores personalizados para tablas
+\usepackage{url} % Inclusión y formato de enlaces URL
+\usepackage{lineno} % Numeración de líneas
+\usepackage{enumitem} % Control de listas y enumeraciones
+\usepackage{soul} % Resaltado de texto con subrayado
+\usepackage[numbers]{natbib} % Citas bibliográficas y bibliografía
+\usepackage[colorlinks=true, bookmarks=false, citecolor=blue, urlcolor=blue, linkcolor=blue, linktoc=page]{hyperref} % Creación de enlaces y referencias
+\usepackage{titlesec} % Control del formato de títulos de sección
+\usepackage{fancyhdr} % Personalización de encabezados y pies de página
+\usepackage{datetime} % Manipulación de fechas y tiempos
+% Modificar márgenes
+\geometry{left=2.5cm, right=2.5cm, top=2.0cm, bottom=2.0cm}
+% Espaciado entre líneas
+\linespread{1.5} 
+% Cambiar nombre a tablas
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+% Cambiar nombre a lista de tablas
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+% Modificar el estilo de los capítulos
+\titleformat{\chapter}[display]
+{\color{black}\fontfamily{pcr}\LARGE\scshape\raggedleft}
+{\chaptertitlename\ \color{red}\fontsize{20}{00}\mdseries\thechapter} {-10pt} {\color{black}\rmfamily\huge}
+%\titlespacing*{\chapter}{0pt}{0pt}{50pt}
+% Diseño del encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.1pt}
+% Quitar espacio vertical en listas
+\setlist[itemize]{noitemsep, topsep=0pt}
+% Numerar las secciones
+\setcounter{secnumdepth}{4} % Establece la profundidad de numeración de secciones
+\titleformat{\paragraph}{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{} % Define el formato de las subsubsubsecciones
+% Modificar la tabla de contenido
+\setcounter{tocdepth}{4}
+\addto\captionsspanish{\renewcommand{\contentsname}{Contenido}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% AQUI INICIA EL DOCUMENTO %%%%%%%
+\begin{document}
+\pagenumbering{Roman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% PORTADA %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\newgeometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\begin{minipage}[c]{0.15\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{01_Figuras/00_TECNM.png}
+\end{minipage}
+\hfill % Espacio horizontal entre las cajas
+\begin{minipage}[c]{0.8\textwidth}
+    \centering
+        \textsc{\large Tecnológico Nacional de México Campus Pabellón de Arteaga}\\[0.3cm]
+        \textsc{\large Tecnologías de la Información y Comunicacione}\\[0.3cm]
+        \hrule height1pt
+        \vspace{0.1cm}
+        \hrule height2pt
+        \vspace{0.3cm}
+\end{minipage}
+
+\begin{minipage}[c]{0.15\textwidth}
+    \vspace{0.5cm}
+    \hspace{0.5cm}
+    \vrule width1pt height15cm 
+    \hspace{0.05cm}
+    \vrule width2pt height15cm
+\end{minipage}
+\hfill % Espacio horizontal entre las cajas
+\begin{minipage}[c]{0.8\textwidth}
+    \centering
+        \textbf{\large Control de enfriadores}\\[1cm]
+        \text{\large Por}\\[1cm]
+        \text{\Large Sergio Antonio Reyes Ibarra}\\[1cm]
+        \textit{\large Proyecto de la Materia DACSI:}\\[1cm]
+        \text{\large Profesor:}\\[1cm]
+        \text{\Large Eduardo Flores Gallegos}\\[1cm]
+\end{minipage}
+
+\begin{minipage}[c]{0.23\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{01_Figuras/tecsito.jpeg}
+\end{minipage}
+
+
+\hfill % Espacio horizontal entre las cajas
+\begin{minipage}[c]{0.8\textwidth}
+    \centering
+        \mdseries{\large Pabellón de Arteaga, Aguascalientes, \the\year}
+\end{minipage}
+
+\end{titlepage}
+\restoregeometry
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% RESUMEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% TABLA DE CONTENIDO %%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+\section{Introducción}
+En la empresa "San Marcos" se lleva el control eficaz de los enfriadores que dicha empresa adquiere por otras empresas, las cuales le venden los enfriadores a la empresa "San Marcos",  una vez en su poder, los personaliza y los registra en fisico segun el gerente y empleados que haran manejo del enfriador que se reasignara a un cliente propietario de un comercio que necesite el uso del enfriador para la venta de los productos "San Marcos".
+\subsection{Problematica}
+ La problematica implica que al ser registros de enfriadores en fisico, se hes susceptible a que personal que trabaja en la "planta" o "cedis", pueda alterar o incluso extraviar esta informacion, ya que los vendedores no suelen actualizar la informacion de los enfriadores que administraron a los comercios clientes, así ya no se sabe donde se encuentran los enfriadores que fueron adquiridos hace tiempo, ni quien es el empleado que recibio y entrego el enfriador que se sustrayo del "cedis".
+\subsection{Propuesta de solucion}
+
+\subsection{Justificacion}
+La gestión eficiente de los enfriadores en la empresa presenta desafíos importantes relacionados con la falta de visibilidad en tiempo real sobre el estado y ubicación de cada enfriador. Actualmente, el seguimiento manual o poco centralizado lleva a problemas como la pérdida de equipos, el mal estado de algunos enfriadores, o incluso la falta de disponibilidad oportuna para clientes.
+
+La solución propuesta, un sistema automatizado de gestión de enfriadores, responde a la necesidad de optimizar el control y monitoreo de los equipos en circulación. Esta herramienta digital permitirá:
+
+Monitoreo en tiempo real del estado y ubicación de los enfriadores en las distintas tiendas.
+Control centralizado que permitirá saber la disponibilidad y estado de mantenimiento de cada enfriador, mejorando la capacidad de respuesta.
+Optimización del flujo de préstamo y devolución, asegurando que los enfriadores estén en las tiendas que más lo necesitan y reduciendo el tiempo de inactividad.
+Reducción de pérdidas y mejor administración del mantenimiento, gracias al historial de uso que permitirá dar seguimiento a las condiciones de los enfriadores.
+
+\subsection{Objetivos}
+\subsubsection{Objetivo General:}
+Desarrollar un sistema automatizado de control de enfriadores que permita a la empresa San Marcos gestionar de manera eficiente el préstamo y la devolución de los enfriadores a sus tiendas clientes, optimizando la recolección y organización de la información relacionada con los equipos y los datos de las tiendas y sus propietarios.
+
+
+\subsubsection{Objetivos Específicos:}
+ \textbf{Gestión de enfriadores prestados y devueltos:} 
+    Implementar un módulo que registre de manera precisa el préstamo y devolución de enfriadores, incluyendo fecha, tienda receptora, y estado del equipo.
+
+     \textbf{Registro y control de información de las tiendas:} 
+    Desarrollar un sistema para almacenar y gestionar la información completa de cada tienda (nombre, ubicación, tipo de tienda, etc.), facilitando la trazabilidad de los enfriadores asignados.
+
+     \textbf{Registro de datos de clientes propietarios de las tiendas:} 
+    Establecer una base de datos que permita asociar cada tienda a su respectivo cliente dueño, registrando detalles como nombre, contacto y otros datos relevantes.
+
+     \textbf{Monitoreo del estado de los enfriadores:} 
+    Incorporar un sistema de seguimiento del estado de los enfriadores (en reparación, activos, en uso, etc.) para mejorar la administración del inventario.
+
+     \textbf{Reportes y análisis de uso de enfriadores:} 
+    Implementar un módulo de generación de reportes que permita visualizar información detallada sobre el uso de los enfriadores, su rotación entre tiendas, y tiempos de préstamo.
+
+     \textbf{Optimización de la logística de entrega y recolección:} 
+    Diseñar una función para programar y optimizar las entregas y recolecciones de enfriadores, teniendo en cuenta la ubicación de las tiendas y los tiempos de uso.
+
+     \textbf{Integración con sistemas de inventario y mantenimiento:} 
+    Vincular el sistema de control de enfriadores con otros sistemas internos, como el inventario de equipos y los registros de mantenimiento, para una gestión centralizada.
+
+     \textbf{Seguridad y permisos de acceso:} 
+    Definir diferentes niveles de acceso para el personal de la empresa, asegurando que solo el personal autorizado pueda realizar modificaciones en los datos de los enfriadores, tiendas y clientes.
+
+\subsection{Marco teorico}
+\textbf{1. Automatización de Procesos}
+La automatización se refiere al uso de sistemas tecnológicos para realizar tareas que anteriormente eran ejecutadas de manera manual. En el ámbito empresarial, la automatización de procesos permite reducir errores humanos, optimizar tiempos de respuesta y mejorar la eficiencia operativa. Según [cita], los sistemas automatizados mejoran la productividad de las empresas al estandarizar procesos y minimizar la intervención manual en la gestión de activos.
+
+En el contexto de la gestión de enfriadores, la automatización facilita el monitoreo y el control en tiempo real, asegurando que los enfriadores se encuentren en condiciones óptimas y disponibles cuando se necesiten. Esto impacta directamente en la optimización de recursos, mejorando la toma de decisiones dentro de la cadena logística y operativa de la empresa.
+
+\textbf{2. Gestión de Activos}
+La gestión de activos se refiere al conjunto de prácticas orientadas al manejo eficiente de los recursos físicos de una organización. Según ISO 55000, una norma internacional para la gestión de activos, se define como la coordinación de actividades que permite a las organizaciones maximizar el valor de sus activos a lo largo de su ciclo de vida. Este proceso incluye la adquisición, el mantenimiento, y la disposición final de dichos activos.
+
+En el caso de la empresa que utiliza enfriadores para distribución, la gestión de estos activos es fundamental para garantizar su correcta operación, mantener su durabilidad y optimizar su uso en diferentes puntos de venta. Los sistemas automatizados de gestión de activos permiten reducir costos, mejorar la eficiencia en las operaciones y brindar información clave para la planificación futura.
+
+\textbf{3. Sistemas de Información en la Gestión de Activos}
+Un Sistema de Información de Gestión de Activos (AIMS, por sus siglas en inglés) es un conjunto de herramientas digitales diseñadas para supervisar y gestionar activos físicos. Estos sistemas permiten a las empresas obtener una vista integral de sus activos, generando reportes en tiempo real sobre el estado de los equipos, su ubicación, historial de uso, y programación de mantenimientos.
+
+La importancia de un AIMS en la gestión de enfriadores radica en su capacidad para proporcionar información en tiempo real, ayudando a las empresas a tomar decisiones informadas. La automatización del flujo de datos dentro de estos sistemas permite reducir la incertidumbre sobre la localización de los activos, disminuir los tiempos de inactividad por mantenimiento no planificado y minimizar las pérdidas por extravío de equipos.
+
+\textbf{4. Tecnologías de Identificación y Monitoreo}
+Los sistemas de identificación automática, como el uso de códigos QR y la tecnología RFID (Identificación por Radiofrecuencia), han revolucionado la manera en que se gestionan los activos. Estas tecnologías permiten un seguimiento preciso de los productos y activos en tiempo real, proporcionando datos actualizados sobre el estado de cada elemento.
+
+Códigos QR: Los códigos QR son ampliamente utilizados por su facilidad de implementación y bajo costo. Estos códigos permiten almacenar información relevante sobre los enfriadores y son escaneados para registrar su ubicación y estado en el sistema.
+
+RFID: La tecnología RFID utiliza ondas de radio para identificar y rastrear objetos a distancia. Aunque más costosa que los códigos QR, ofrece ventajas significativas en términos de monitoreo automático y control sin necesidad de contacto visual directo, lo que puede resultar especialmente útil en ambientes industriales o comerciales donde el acceso a los activos no siempre es directo.
+
+\textbf{5. Software de Gestión y Bases de Datos}
+Los sistemas automatizados de gestión requieren un software especializado que permita la captura, almacenamiento y análisis de los datos relacionados con los activos. En el caso de la solución propuesta, un Sistema de Gestión de Bases de Datos Relacional (RDBMS) como SQL Server es una opción robusta y eficiente para manejar grandes volúmenes de datos estructurados, como el inventario de enfriadores y su historial de uso.
+
+Además, el uso de plataformas de desarrollo web como ASP.NET Core ofrece la flexibilidad de crear interfaces de usuario que permitan el acceso a la información en tiempo real desde cualquier dispositivo, facilitando la gestión remota de los activos. La combinación de bases de datos relacionales con un software de gestión web permite no solo almacenar los datos, sino también generar reportes, alertas de mantenimiento, y análisis predictivo.
+
+\textbf{6. Impacto de la Automatización en la Gestión Empresarial}
+La implementación de soluciones automatizadas en la gestión empresarial ha demostrado mejoras significativas en la eficiencia operativa y en la optimización de recursos. Según [cita], las empresas que han adoptado sistemas automatizados de gestión de activos han experimentado una reducción en los costos operativos.
+
+En el caso de la empresa que gestiona enfriadores, la adopción de un sistema automatizado impactará positivamente en la eficiencia operativa, optimizando la gestión del inventario, minimizando las pérdidas por extravío, y mejorando la capacidad de respuesta ante la demanda de los clientes.
+\subsection{Modelado del sistema}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{modelado.png}
+    \caption{modelado del sistema}
+    \label{fig:enter-label}
+\end{figure}
+
+\subsection{Entrevista}
+Se entrevisto a Juan Diego Contreras Montañez, el cual es empleado dedicado a: Administrador de sistemas, Administrador de base de datos, ingeniero en nube, Desarrollador de software. En la empresa "San Marcos" cedis norte (Aguascalientes). La entrevista evaluo los puntos que se requieren almacenar del sistema de control de enfriadores, que puntos de mejora podran ser equivalentes en el tiempo.
+Así se tuvo una vision clara de los elementos que seran necesarios tener en cuenta para desarrollar y implementar el sistema, tambien se tuvo conocimiento del entorno de trabajo con el que convivira el sistema ya levantado por un servicio web.
+
+\section{Etapa 1}
+
+\subsection{Requerimientos Funcionales}
+
+% Primer requerimiento
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RFN1} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Administracion de Usuarios:} El sistema permitirá la creación de cuentas de usuario (encargados).} \\ \hline
+    \textbf{PRIORIDAD: MEDIA} & \textbf{DIFICULTAD: MEDIA} \\ \hline
+\end{tabular}
+\end{table}
+
+% Segundo requerimiento
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RFN2} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Administracion de Enfriadores:} El sistema permitirá el registro de nuevos enfriadores adquiridos por la empresa.} \\ \hline
+    \textbf{PRIORIDAD: ALTA} & \textbf{DIFICULTAD: MEDIA} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RFN3} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Administracion de Enfriadores:} El sistema mantendra monitoreo de los enfriadores, almacenando la informacion de los enfriadores.} \\ \hline
+    \textbf{PRIORIDAD: ALTA} & \textbf{DIFICULTAD: MEDIA} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RFN4} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Administracion de Enfriadores:} El sistema llevara el control de los enfriadores, almacenando la informacion de los estados de los mismos: "Disponibles", "Revisión", "Transito", "Uso planta", "Perdida de activo", "Baja" y "Mercado" .} \\ \hline
+    \textbf{PRIORIDAD: ALTA} & \textbf{DIFICULTAD: MEDIA} \\ \hline
+\end{tabular}
+\end{table}
+
+% Tercer requerimiento
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RFN5} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Reportes de Uso:} El sistema generará reportes llamados comodatos sobre el uso de enfriadores y las tiendas que los tienen en préstamo.} \\ \hline
+    \textbf{PRIORIDAD: MEDIA} & \textbf{DIFICULTAD: MEDIA} \\ \hline
+\end{tabular}
+\end{table}
+
+% Cuarto requerimiento
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RFN6} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Seguridad del Sistema:} Implementar un sistema de autenticación y permisos de acceso para los usuarios.} \\ \hline
+    \textbf{PRIORIDAD: ALTA} & \textbf{DIFICULTAD: ALTA} \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\newpage
+
+\subsection{Requerimientos No Funcionales}
+
+
+% Primer requerimiento no funcional
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RNF1} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Rendimiento:} El sistema debe manejar al menos 5000 registros de enfriadores y 5000 tiendas sin afectar el rendimiento.} \\ \hline
+    \textbf{PRIORIDAD: ALTA} & \textbf{DIFICULTAD: MEDIA} \\ \hline
+\end{tabular}
+\end{table}
+
+% Segundo requerimiento no funcional
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RNF2} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Escalabilidad:} El sistema debe ser escalable para permitir el registro de un número creciente de enfriadores y tiendas.} \\ \hline
+    \textbf{PRIORIDAD: MEDIA} & \textbf{DIFICULTAD: ALTA} \\ \hline
+\end{tabular}
+\end{table}
+
+% Tercer requerimiento no funcional
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|l|}
+    \hline
+    \textbf{RNF3} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Seguridad:} Implementar medidas de seguridad para proteger la información de clientes y tiendas, asegurando que solo el personal autorizado tenga acceso.} \\ \hline
+    \textbf{PRIORIDAD: ALTA}&\textbf{DIFICULTAD:ALTA}\\ \hline
+\end{tabular}
+\end{table}
+\newpage
+
+
+% Cuarto requerimiento no funcional
+\begin{table}[h!]
+\centering
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular}{|p{14cm}|p{4cm}|}
+    \hline
+    \textbf{RNF4} & \textbf{VERSIÓN 1:1} \\ \hline
+    \multicolumn{2}{|p{18cm}|}{\textbf{Compatibilidad:} El sistema debe ser compatible con diferentes modulos dados de alta en planta para verificar la rentabilidad de los enfriadores en cada tienda.} \\ \hline
+    \textbf{PRIORIDAD: MEDIA} &\textbf{DIFICULTAD: ALTA}\\ \hline
+\end{tabular}
+\end{table}
+\subsection{Entorno de trabajo}
+Servidor de Aplicaciones (App Server)
+\textbf{Sistema Operativo:} El servidor donde está alojado el sitio web  corre sobre Windows Server, ya que IIS es un servicio nativo de Microsoft.
+
+\textbf{IIS (Internet Information Services):} Este servicio actúa como el servidor web que hospeda el sitio web. En este caso, IIS está configurado para funcionar únicamente a nivel local, sin acceso externo.
+
+\textbf{Aplicación Web:} El sitio web está configurado en IIS, y se puede acceder a él a través de la red local (por ejemplo, http://srvapp02/Refrigeracion).
+ 
+\textbf{Conexión a la Base de Datos:} El servidor de aplicaciones esta conectado a la base de datos interna para manejar las operaciones del sitio web, ubicado en el mismo servidor.
+
+Cisco Meraki (Firewall y VPN)
+\textbf{Seguridad y Gestión de la Red:} Cisco Meraki es un firewall que administra y asegura el tráfico de la red. Este equipo esta configurado para gestionar el tráfico localmente, aplicando reglas de acceso y filtrado entre diferentes segmentos de la red.
+
+\textbf{Filtrado de Tráfico:} Cisco Meraki filtra el tráfico entre los diferentes departamentos o áreas de la planta, asegurando que solo los equipos que necesitan acceso al servidor de aplicaciones lo tengan, aplicando las políticas de la organización.
+
+Red Local (LAN)
+\textbf{Conexión Física:} La red local conecta físicamente a todas las computadoras, servidores, y otros dispositivos en la planta. Aquí los switches y routers administran el tráfico entre diferentes zonas de la red.
+
+\textbf{VLANs (Redes Virtuales):} Es posible que se configuren VLANs para separar el tráfico en diferentes segmentos de red (por ejemplo, oficinas administrativas, planta de producción, etc.). Esto mejora la seguridad y el rendimiento.
+
+\textbf{Acceso al Servidor IIS:} Los usuarios dentro de la red local acceden al sitio web alojado en IIS a través de la red. Pueden ser computadoras de escritorio, laptops, o incluso dispositivos móviles, siempre que estén conectados a la misma LAN.
+
+\textbf{DNS Local:} Si se configura un servidor DNS local, los usuarios podrán acceder al sitio web a través de un nombre amigable (por ejemplo, \url{http://intranet.local}) en lugar de una dirección IP.
+
+Seguridad en la Planta
+\textbf{Autenticación y Autorización:} Para garantizar que solo el personal autorizado pueda acceder al sitio web, se podrían utilizar medidas de autenticación como Active Directory (AD) o algún otro método de autenticación a nivel de aplicación.
+
+\textbf{Monitoreo de Red:} Los dispositivos de red (como los administrados por Cisco Meraki) pueden monitorear y registrar el tráfico de red hacia el servidor de aplicaciones para detectar accesos no autorizados o actividad sospechosa.
+
+Mantenimiento y Actualizaciones
+\textbf{Actualización del Sitio Web:} El administrador del sistema o el desarrollador puede realizar actualizaciones en la aplicación directamente en el servidor de aplicaciones, ya que es un entorno local.
+
+\textbf{Backups y Respaldo:} Es crucial tener un plan de respaldo, tanto para la aplicación en IIS como para la base de datos, para evitar la pérdida de datos en caso de fallos.
+
+\textbf{Mantenimiento de la Red:} Cisco Meraki y otros dispositivos de red se encargan del mantenimiento y la monitorización constante del tráfico, asegurando que no haya cuellos de botella o problemas de seguridad.
+
+\textbf{Diagrama Resumido}
+\begin{itemize}
+    \item Usuarios en la red local acceden al sitio web alojado en el servidor IIS.
+    \item El servidor IIS en el servidor de aplicaciones sirve las solicitudes HTTP a los usuarios.
+    \item Cisco Meraki controla el acceso, aplicando reglas de seguridad y filtrado de tráfico entre los diferentes segmentos de la planta y los servidores.
+    \item La Red Local conecta todos los dispositivos dentro de la planta, administrada mediante routers, switches y posiblemente VLANs.
+\end{itemize}
+
+\section{Apendice}
+\subsection{Resumen de la entrevista}
+\begin{itemize}
+    \item \textbf{¿Cuál es el objetivo principal del sistema?} 
+    Mejorar la gestión del préstamo y devolución de enfriadores a las tiendas clientes, optimizando el seguimiento y control de los equipos.
+    
+    \item \textbf{¿Qué problemas actuales busca resolver el sistema?} 
+    Inconsistencias en el registro de enfriadores prestados, falta de visibilidad del estado de los equipos y dificultad para acceder a la información de las tiendas y clientes.
+\end{itemize}
+
+\textbf{¿Qué información se necesita registrar para cada enfriador?}
+\begin{itemize}
+    \item [\checkmark] ID del enfriador
+    \item [\checkmark] Marca/Modelo
+    \item [\checkmark] Estado (nuevo, en reparación, etc.)
+    \item [\checkmark] Fecha de préstamo
+    \item [\checkmark] Fecha de devolución
+    \item [\checkmark] Tienda asignada
+    \item [\checkmark] Observaciones
+\end{itemize}
+
+\textbf{¿Qué datos se deben recopilar para cada tienda?}
+\begin{itemize}
+    \item [\checkmark] ID de la tienda
+    \item [\checkmark] Nombre de la tienda
+    \item [\checkmark] Ubicación (dirección)
+    \item [\checkmark] Tipo de tienda (ej. supermercado, tienda de conveniencia)
+    \item [\checkmark] Contacto (nombre y número)
+\end{itemize}
+
+\textbf{¿Qué información se requiere del cliente dueño de la tienda?}
+\begin{itemize}
+    \item [\checkmark] Nombre
+    \item [\checkmark] Número de contacto
+    \item [\checkmark] Correo electrónico
+    \item [\checkmark] Dirección
+\end{itemize}
+
+\textbf{¿Qué funcionalidades adicionales considera necesarias?}
+\begin{itemize}
+    \item [\checkmark] Reportes de uso de enfriadores
+    \item [\checkmark] Alertas de devoluciones pendientes
+    \item [\checkmark] Monitoreo del estado de los enfriadores
+    \item [\checkmark] Seguridad y permisos de acceso
+\end{itemize}
+
+
+
+
+\bibliographystyle{elsarticle-num-names}
+\bibliography{03_Bibliografias.bib}
+\end{document}
